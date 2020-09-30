@@ -34,8 +34,11 @@
         </div>
         <div class="form-group">
           <label for="password">Senha</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="Informe a senha"
-            autofocus>
+          <input type="password" id="password" name="password"
+            class="form-control <?= $errors['password'] ? 'is-invalid' : '' ?>" placeholder="Informe a senha" autofocus>
+          <div class="invalid-feedback">
+            <?= $errors['password'] ?>
+          </div>
         </div>
       </div>
 
