@@ -76,12 +76,21 @@ class Model {
     Database::executeSQL($sql);
   }
 
+  public static function getCount($filters = []) {
+    $result = static::getResultSetFromSelect($filters, 'count(*) as count');
+    return $result->fetch_assoc()['count'];
+  }
+
   private static function getFilters($filters) {
     $sql = '';
     if(count($filters) > 0) {
       $sql .= " WHERE 1 = 1";
       foreach($filters as $column => $value) {
-        $sql .= " AND ${column} = " . static::getFormatedValue($value);
+        if($column == 'raw') {
+          $sql .= " AND  {$value}";
+        } else {
+          $sql .= " AND ${column} = " . static::getFormatedValue($value);
+        }
       }
     }
     return $sql;
