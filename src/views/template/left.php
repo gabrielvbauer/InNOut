@@ -13,6 +13,7 @@
           Relatório Mensal
         </a>
       </li>
+      <?php if($user->is_admin): ?>
       <li class="nav-item">
         <a href="manager_report.php">
           <i class="icofont-chart-histogram mr-2"></i>
@@ -25,6 +26,7 @@
           Usuários
         </a>
       </li>
+      <?php endif ?>
     </ul>
   </nav>
 
